@@ -1,31 +1,52 @@
 "use client";
 
 import Result from "@/app/components/Result";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+
+type Error = {
+  title: string;
+  message: string;
+  resolution: string;
+};
 
 export default function Page({ params }: { params: { word: string } }) {
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${params.word}`)
-      .then((res) => res.json())
-      .then((data) => {
+  const handleFetch = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${params.word}`,
+      );
+      const data = await response.json();
+
+      if (response.ok) {
         setResult(data[0]);
         setIsLoading(false);
-      });
-  }, [setResult, params.word]);
+      } else if (response.status === 404) {
+        setError(data);
+        setIsLoading(false);
+        return;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [params.word]);
+
+  useEffect(() => {
+    handleFetch();
+  }, [handleFetch]);
+
   return (
     <>
       {result && !isLoading && <Result data={result} />}
-      {!result && !isLoading && (
+      {error && !isLoading && (
         <section className="mt-[132px] flex w-full flex-col items-center justify-center text-center">
-          <div className="text-heading-lg mb-11">😕</div>
-          <h1 className="mb-6 font-bold">No Definitions Found</h1>
+          <div className="mb-11 text-heading-lg">😕</div>
+          <h1 className="mb-6 font-bold">{error.title}</h1>
           <p className="text-neutral-400">
-            Sorry pal, we couldn&apos;t find definitions for the word you were
-            looking for. You can try searching again at a later time or head to
-            the web instead.
+            {error.message} {error.resolution}
           </p>
         </section>
       )}
