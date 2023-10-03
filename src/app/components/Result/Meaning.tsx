@@ -36,10 +36,16 @@ export default function Meaning({ data }: IMeaning) {
       {data.synonyms.length > 0 && (
         <div className="flex items-center gap-[22px]">
           <h3 className="text-heading-sm text-neutral-400">Synonyms</h3>
-          <ul className="text-heading-sm flex flex-wrap gap-2 font-bold text-purple">
+          <ul className="flex flex-wrap gap-2 text-heading-sm font-bold text-purple">
             {data.synonyms.map((s, index) => (
               <li key={index}>
-                <Link href={`/definition/${s}`}>{s}</Link>
+                <Link
+                  href={`/definition/${s}`}
+                  replace
+                  className="border-purple hover:border-b"
+                >
+                  {s}
+                </Link>
               </li>
             ))}
           </ul>
