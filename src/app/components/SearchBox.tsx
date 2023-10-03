@@ -52,7 +52,7 @@ export default function SearchBox() {
       <form className="relative w-full" onSubmit={handleSubmit}>
         <input
           type="text"
-          className="w-full rounded-lg border-none bg-neutral-200 p-3 font-bold caret-purple outline-none placeholder:text-neutral-600/25 focus:ring-purple"
+          className="w-full rounded-lg border-none bg-neutral-200 p-3 font-bold caret-purple outline-none placeholder:text-neutral-600/25 focus:ring-purple dark:bg-neutral-600 dark:placeholder:text-white/25"
           placeholder="Search for any word..."
           id="query"
           name="query"

@@ -35,6 +35,10 @@ const config: Config = {
         "body-md": ["18px", "24px"],
         "body-sm": ["14px", "17px"],
       },
+      boxShadow: {
+        menu: "0px 5px 30px 0 #00000010",
+        "menu-dark": "0px 5px 30px 0 #A445ED",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

@@ -9,7 +9,7 @@ interface IResult {
 
 export default function Result({ data }: IResult) {
   return (
-    <section className="flex flex-col gap-[40px]">
+    <section className="flex flex-col gap-8 md:gap-10">
       <div className="flex flex-col gap-2">
         <h1 className="text-heading-lg font-bold">{data.word}</h1>
 
@@ -33,11 +33,13 @@ export default function Result({ data }: IResult) {
                 </h4>
                 <a
                   href={url}
-                  className="flex items-center gap-[9px] text-neutral-600"
+                  className="flex items-center gap-[9px] text-neutral-600 dark:text-white"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="border-b border-neutral-600">{url}</span>
+                  <span className="border-b border-neutral-600 dark:border-white">
+                    {url}
+                  </span>
                   <div className="relative h-[12px] w-[12px]">
                     <Image
                       alt="External link icon"

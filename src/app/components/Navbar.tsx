@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FontSelect from "./FontSelect";
 import Divider from "./Divider";
-import ThemeSelect from "./ThemeSelect";
+import ThemeSwitcher from "./ThemeSelect";
 
 export default function Navbar() {
   return (
@@ -19,7 +19,7 @@ export default function Navbar() {
         <FontSelect />
         {/* Theme toggler */}
         <Divider />
-        <ThemeSelect />
+        <ThemeSwitcher />
       </div>
     </nav>
   );
