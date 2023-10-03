@@ -29,9 +29,6 @@ type Definition = {
 
 export default function SearchBox() {
   const router = useRouter();
-  const params = useParams();
-
-  const [defaultValue, setDefaultValue] = useState("");
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const input = e.currentTarget.value;
@@ -50,18 +47,6 @@ export default function SearchBox() {
     }
   };
 
-  useEffect(() => {
-    if (params.word) {
-      const word = params.word.toString();
-
-      word.includes("%20")
-        ? setDefaultValue(word.replace("%20", " "))
-        : setDefaultValue(word);
-    } else {
-      setDefaultValue("");
-    }
-  }, [setDefaultValue, params.word]);
-
   return (
     <>
       <form className="relative w-full" onSubmit={handleSubmit}>
@@ -71,7 +56,6 @@ export default function SearchBox() {
           placeholder="Search for any word..."
           id="query"
           name="query"
-          defaultValue={defaultValue}
           onChange={handleChange}
           required
         />
