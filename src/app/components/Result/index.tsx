@@ -14,7 +14,7 @@ export default function Result({ data }: IResult) {
         <h1 className="text-heading-lg font-bold">{data.word}</h1>
 
         {data.phonetic && (
-          <p className="text-heading-md text-purple">/{data.phonetic}/</p>
+          <p className="text-heading-md text-purple">{data.phonetic}</p>
         )}
       </div>
 
@@ -25,7 +25,7 @@ export default function Result({ data }: IResult) {
       {data.sourceUrls && (
         <div>
           <Divider horizontal />
-          <ul className="text-body-sm mt-[19px] flex flex-col gap-2">
+          <ul className="mt-[19px] flex flex-col gap-2 text-body-sm">
             {data.sourceUrls.map((url, index) => (
               <li key={index} className="flex gap-5">
                 <h4 className="border-b border-neutral-400 text-neutral-400">
@@ -33,17 +33,18 @@ export default function Result({ data }: IResult) {
                 </h4>
                 <a
                   href={url}
-                  className="flex gap-[9px] text-neutral-600"
+                  className="flex items-center gap-[9px] text-neutral-600"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span className="border-b border-neutral-600">{url}</span>
-                  <Image
-                    alt="External link icon"
-                    src="/images/icon-new-window.svg"
-                    width={12}
-                    height={12}
-                  />
+                  <div className="relative h-[12px] w-[12px]">
+                    <Image
+                      alt="External link icon"
+                      src="/images/icon-new-window.svg"
+                      fill
+                    />
+                  </div>
                 </a>
               </li>
             ))}
