@@ -2,19 +2,39 @@ import Image from "next/image";
 import Divider from "../Divider";
 import { QueryResult } from "../SearchBox";
 import Meaning from "./Meaning";
+import PlayIcon from "../ui/PlayIcon";
 
 interface IResult {
   data: QueryResult;
 }
 
 export default function Result({ data }: IResult) {
+  let audio: HTMLAudioElement = new Audio(undefined);
+  for (let i = 0; i < data.phonetics.length; i++) {
+    if (data.phonetics[i].audio !== "") {
+      audio.src = data.phonetics[i].audio;
+      break;
+    }
+  }
+
+  const handleClick = () => {
+    audio.play();
+  };
+
   return (
     <section className="flex flex-col gap-8 md:gap-10">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-heading-lg font-bold">{data.word}</h1>
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-heading-lg font-bold">{data.word}</h1>
+          {data.phonetic && (
+            <p className="text-heading-md text-purple">{data.phonetic}</p>
+          )}
+        </div>
 
-        {data.phonetic && (
-          <p className="text-heading-md text-purple">{data.phonetic}</p>
+        {audio.src && (
+          <button aria-label="Pronunciation" onClick={handleClick}>
+            <PlayIcon className="stroke-purple transition-colors group-hover:stroke-white" />
+          </button>
         )}
       </div>
 

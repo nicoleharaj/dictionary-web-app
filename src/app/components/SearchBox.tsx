@@ -7,7 +7,7 @@ import Image from "next/image";
 export type QueryResult = {
   meanings: Array<Meaning>;
   license: { name: string; url: string };
-  phonetics: Array<Object>;
+  phonetics: Array<Phonetic>;
   phonetic: string;
   sourceUrls: Array<string>;
   word: string;
@@ -25,6 +25,11 @@ type Definition = {
   definition: string;
   synonyms: Array<string>;
   example: string;
+};
+
+type Phonetic = {
+  text: string;
+  audio: string;
 };
 
 export default function SearchBox() {
