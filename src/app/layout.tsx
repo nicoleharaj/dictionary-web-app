@@ -39,7 +39,7 @@ export default function RootLayout({
       className={`${inter.variable} ${roboto_mono.variable} ${lora.variable}`}
     >
       <body className="flex w-screen flex-col items-center overflow-x-hidden px-[24px] text-body-md text-neutral-600 dark:text-white md:px-[39px]">
-        <main className="flex w-full max-w-[737px] flex-col gap-[23px] pb-[85px] md:gap-[41px] md:pb-[124px] lg:gap-[43px]">
+        <main className="flex w-full max-w-[737px] flex-col gap-[41px] pb-[85px] md:gap-[41px] md:pb-[124px] lg:gap-[43px]">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navbar />
             <SearchBox />
