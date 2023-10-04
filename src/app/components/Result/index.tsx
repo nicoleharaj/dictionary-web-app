@@ -52,7 +52,7 @@ export default function Result({ data }: IResult) {
           <ul className="mt-[19px] flex flex-col gap-2 text-body-sm">
             {data.sourceUrls.map((url, index) => (
               <li key={index} className="flex gap-5">
-                <h4 className="border-b border-neutral-400 text-neutral-400">
+                <h4 className="text-neutral-400">
                   Source
                 </h4>
                 <a
