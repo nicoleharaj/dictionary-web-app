@@ -33,6 +33,7 @@ export default function ThemeSelect() {
             className="sr-only"
             defaultChecked={theme === "dark"}
             id="theme-toggle"
+            name="theme-toggle"
           />
           <div
             className={`h-5 w-10 rounded-full ${
