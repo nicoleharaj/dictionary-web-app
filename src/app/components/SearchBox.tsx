@@ -71,10 +71,11 @@ export default function SearchBox() {
           id="query"
           name="query"
           onChange={handleChange}
+          aria-label="Enter a word"
         />
-        <div className="absolute bottom-0 right-5 top-0 my-auto h-[15.5px] w-[15.5px]">
+        <button type="submit" className="absolute bottom-0 right-5 top-0 my-auto h-[15.5px] w-[15.5px]" aria-label="Submit search">
           <Image src="/images/icon-search.svg" alt="Search icon" fill />
-        </div>
+        </button>
         {submitError && (
           <p className="absolute mt-1 text-[16px] text-red md:mt-2 md:text-heading-sm">
             Whoops, can&apos;t be empty...

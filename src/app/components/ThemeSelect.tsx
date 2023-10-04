@@ -42,6 +42,7 @@ export default function ThemeSelect() {
       <label
         className="group flex cursor-pointer select-none items-center gap-5"
         htmlFor="theme-toggle"
+        aria-label="Theme toggler"
       >
         <div className="relative">
           <input
