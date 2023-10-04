@@ -50,7 +50,7 @@ export default function ThemeSelect() {
             className="sr-only"
             defaultChecked={theme === "dark"}
             id="theme-toggle"
-            name="theme-toggle"
+            aria-label="Theme toggler"
           />
           <div
             className={`h-5 w-10 rounded-full ${
