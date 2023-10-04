@@ -2,9 +2,8 @@ export default function PlayIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="75"
-      height="75"
       viewBox="0 0 75 75"
+      className="w-12 h-12 md:w-[75px] md:h-[75px]"
     >
       <g fillRule="evenodd" className="group">
         <circle

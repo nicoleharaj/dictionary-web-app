@@ -22,12 +22,16 @@ export default function Result({ data }: IResult) {
   };
 
   return (
-    <section className="flex flex-col gap-8 md:gap-10">
+    <section className="flex flex-col gap-[34px] md:gap-12">
       <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-heading-lg font-bold">{data.word}</h1>
+        <div className="flex flex-col gap-4">
+          <h1 className="text-[32px] font-bold md:text-heading-lg">
+            {data.word}
+          </h1>
           {data.phonetic && (
-            <p className="text-heading-md text-purple">{data.phonetic}</p>
+            <p className="text-body-md text-purple md:text-heading-md">
+              {data.phonetic}
+            </p>
           )}
         </div>
 
