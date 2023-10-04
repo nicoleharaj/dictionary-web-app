@@ -17,20 +17,29 @@ export default function FontSelect() {
       <button
         className="flex items-center gap-4"
         onClick={() => setShowMenu(!showMenu)}
+        onBlur={() => setShowMenu(false)}
       >
-        <span className="text-body-md font-bold">Sans Serif</span>
+        <span className="text-body-md font-bold">
+          {currentFont === "sans"
+            ? "Sans Serif"
+            : currentFont === "mono"
+            ? "Mono"
+            : currentFont === "serif"
+            ? "Serif"
+            : "Sans Serif"}
+        </span>
         <div className="relative h-[6px] w-[12px]">
           <Image src="/images/icon-arrow-down.svg" alt="Dropdown arrow" fill />
         </div>
       </button>
 
       {showMenu && (
-        <ul className="shadow-menu dark:shadow-menu-dark absolute right-0 z-50 mt-4 flex w-[183px]  flex-col rounded-xl bg-white text-body-md font-bold dark:bg-neutral-600">
+        <ul className="absolute right-0 z-50 mt-4 flex w-[183px] flex-col rounded-xl  bg-white text-body-md font-bold shadow-menu dark:bg-neutral-600 dark:shadow-menu-dark">
           <li className="font-sans">
             <button
               className="w-full px-6 pt-6 text-left hover:text-purple"
               value="sans"
-              onClick={handleClick}
+              onMouseDown={handleClick}
             >
               Sans Serif
             </button>
@@ -39,7 +48,7 @@ export default function FontSelect() {
             <button
               className="w-full px-6 py-4 text-left hover:text-purple"
               value="serif"
-              onClick={handleClick}
+              onMouseDown={handleClick}
             >
               Serif
             </button>
@@ -48,7 +57,7 @@ export default function FontSelect() {
             <button
               className="w-full px-6 pb-6 text-left hover:text-purple"
               value="mono"
-              onClick={handleClick}
+              onMouseDown={handleClick}
             >
               Mono
             </button>
